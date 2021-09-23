@@ -1,34 +1,31 @@
-var wrap = document.getElementsByClassName("wrapper")[0];
-
-let dragonHealth = 10;
-let userHealth = 5;
-
-//this wile loop runs wile both are alive
-let randDamage;
-let dragRandDamage;
-while (dragonHealth > 0 && userHealth > 0) {
-    var damage = window.prompt("Enter the number of hits you are going to attempt to hit the dragon Max damage upto 5");
-
-    //random damage generator
-    randDamage = Math.floor(Math.random() * damage) + 1;
-    if (randDamage > 5) {
-        dragonHealth = dragonHealth - 1;
-    } else {
-        dragonHealth = dragonHealth - randDamage;
+function fightDragon() {
+    var userHealth = 5;
+    var youHit = function() {
+        return Math.floor(Math.random() * 2);
+    };
+    var damageThisRound = function() {
+        return Math.floor(Math.random() * 5 + 1);
     }
-    //if dragon dies
-    if (dragonHealth > 0) {
-        dragRandDamage = Math.floor(Math.random() * 2) + 1;
-        userHealth = userHealth - dragRandDamage;
-    } else {
-        wrap.innerHTML = "User Wins! " + "User Health = " + userHealth + ", Dragon Health = " + dragonHealth;
-        break;
-    }
-    //if user dies
-    if (userHealth <= 0) {
-        wrap.innerHTML = "Dragon Wins! " + "User Health = " + userHealth + ", Dragon Health = " + dragonHealth;
-        break;
+    var totalDamage = 0;
+    var dragonDamage = function() {
+        return Math.floor(Math.random() * 2);
     }
 
+    while (userHealth > 0) {
+        var damage = youHit();
+        if (damage) {
+            console.log("You hit the dragon!");
+            totalDamage += damageThisRound();
+            console.log("Total damage dealt: " + totalDamage + "!");
+            if (totalDamage >= 4) {
+                console.log('You slew the dragon!');
+                break;
+            }
+        } else {
+            console.log('The dragon has dealt damage to you!');
+            userHealth -= dragonDamage();
+            console.log('Your health is now: ' + userHealth + '!')
+        }
+    }
 
 }
