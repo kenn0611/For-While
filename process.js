@@ -1,11 +1,11 @@
 var wrap = document.getElementsByClassName("wrapper")[0];
 
-let dragonHealth = 10;
-let userHealth = 5;
+var dragonHealth = 10;
+var userHealth = 5;
 
 //this wile loop runs wile both are alive
-let randDamage;
-let dragRandDamage;
+var randDamage;
+var dragRandDamage;
 while (dragonHealth > 0 && userHealth > 0) {
     var damage = window.prompt("Enter the number of hits you are going to attempt to hit the dragon Max damage upto 5");
 
