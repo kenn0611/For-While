@@ -1,4 +1,4 @@
-function fightDragon() {
+function dragonDamage() {
     var userHealth = 5;
     var youHit = function() {
         return Math.floor(Math.random() * 2);
